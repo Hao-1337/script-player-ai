@@ -61,9 +61,6 @@ export * from "./config.js";
 
 MainThread(modules, G, false);
 
-//import WorldEdit from "./modules/worldedit.js";
-//import _ from "./video-praser/index.js";
-    
 /**
  * make a debug
  * @param {any} t data need debug
@@ -87,7 +84,22 @@ world.debug= (t,e={},r=false) => {
     let data = o?.includes("Error") ? `§4[Debugger Error]§c ${t}\n${t.stack}` : `§4[Debugger<§eLine: §f${line}§c> - Class: ${o ?? "None"}]§r ${JSON.colorStringify(t)}`;
     return r ? data : tell(data);
 }
-
+export function EvalThread(chat, player, config) {
+  try {
+    var save, err, o = chat.slice(config.evalPrefix.length);
+    eval(`
+        try {
+            save = ${o};
+        } catch (e) {
+            err = e;
+        }
+    `);
+    player.sendMessage(`§l<§r§7 ${o.replace(/\"([\w\W]+)\"/g, '§a"$1"§r§7')}\n§r§l>§r ${err ? world.debug(err) : JSON.colorStringify(save)}`);
+  } catch (e) {
+      eval(o);
+      player.sendMessage(`§l<§r§7 ${o.replace(/\"([\w\W]+)\"/g, '§a"$1"§r§7')}\n§r§l>§6Undefined`); 
+  }
+}
 async function MainThread(modules, config, freeze = false) {
   /* Config won't be change in runtime */
   if (freeze) (function freeze(obj) {
