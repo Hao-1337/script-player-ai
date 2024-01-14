@@ -1,0 +1,23 @@
+{
+  "format_version":1,"header": {
+    "name":"§l§uScript RP",
+    "description":"§aResource pack using for all pack made by Hao1337\n",
+    "uuid": "ef647d5c-de0b-4d26-870d-f82c8d1bd539",
+    "version": [
+      1,
+      0,
+      3
+    ]
+  },
+  "modules":[
+    {
+      "type":"resources",
+      "uuid":"ec699344-47f9-43bf-9038-b91de03516d0",
+      "version":[
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

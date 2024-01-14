@@ -1,0 +1,10 @@
+{
+  "namespace": "common",
+  "text_edit_box_label": {
+    "font_size": "$font_size",
+    "font_type": "$font_type",
+
+    "$font_type|default": "default",
+    "$font_scale_factor|default": 1.0
+  }
+}
